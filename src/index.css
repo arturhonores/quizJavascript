@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply bg-yellow-500 rounded-full text-slate-900 font-light uppercase transition-all duration-300 hover:bg-yellow-400 hover:transition-all hover:duration-300;
+  }
+}
