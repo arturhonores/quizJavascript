@@ -1,4 +1,4 @@
-export const questions = [
+export const data = [
     {
         "id": 1,
         "question": "JavaScript es un lenguaje _______",

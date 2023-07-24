@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import ResultTable from "./ResultTable"
+import { useDispatch } from "react-redux"
+import { resetAllAction } from "../redux/question_reducer"
+import { resetResultAction } from "../redux/result_reducer"
 
 const Result = () => {
-    const onRestart = () => {
-        console.log("onRestart")
+
+    const dispatch = useDispatch()
+    function onRestart() {
+        dispatch(resetAllAction())
+        dispatch(resetResultAction())
     }
+
     return (
         <>
             <div className="text-white my-10 mx-auto p-5 max-w-3xl flex flex-col gap-6">
