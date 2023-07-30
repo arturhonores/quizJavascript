@@ -45,3 +45,5 @@ export const data = [
         ]
     }
 ]
+
+export const answers = [0, 1, 2, 1, 0]

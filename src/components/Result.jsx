@@ -1,12 +1,27 @@
 import { Link } from "react-router-dom"
 import ResultTable from "./ResultTable"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { attempts_Number, earnPoints_Number, flagResult } from "../helper/helper"
+
+/**import actions */
 import { resetAllAction } from "../redux/question_reducer"
 import { resetResultAction } from "../redux/result_reducer"
+import { useEffect } from "react"
 
 const Result = () => {
 
     const dispatch = useDispatch()
+    const { questions: { queue, answers }, result: { result, userId } } = useSelector(state => state)
+
+    useEffect(() => {
+        console.log(earnPoints)
+    })
+
+    const totalPoints = queue.length * 10;
+    const attempts = attempts_Number(result);
+    const earnPoints = earnPoints_Number(result, answers, 10);
+    const flag = flagResult(totalPoints, earnPoints)
+
     function onRestart() {
         dispatch(resetAllAction())
         dispatch(resetResultAction())
@@ -23,23 +38,23 @@ const Result = () => {
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Puntos totales :</span>
-                        <span className="">50</span>
+                        <span className="">{totalPoints || 0}</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Total de Preguntas :</span>
-                        <span className="">05</span>
+                        <span className="">{queue.length || 0}</span>
                     </div>
                     <div className="flex justify-between">
-                        <span className="font-bold">Aciertos :</span>
-                        <span className="">03</span>
+                        <span className="font-bold">Preguntas Contestadas :</span>
+                        <span className="">{attempts || 0}</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Puntos Alcanzados :</span>
-                        <span className="d">30</span>
+                        <span className="d">{earnPoints || 0} </span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Resultado</span>
-                        <span className="font-bold">Aprobado</span>
+                        <span className={`font-bold ${flag ? "text-green-500" : "text-red-500"}`}>{flag ? "Aprobado" : "Desaprobado"}</span>
                     </div>
                 </div>
                 <Link className="btn w-fit self-center px-8 py-2" to={"/"} onClick={onRestart}>Inicio</Link>

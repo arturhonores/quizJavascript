@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 /**Custom Hook */
 import { useFetchQuestion } from "../hooks/FetchQuestion";
+import { updateResult } from "../hooks/setResult";
 
 const Questions = ({ onChecked }) => {
 
     const [checked, setChecked] = useState(undefined)
+    const { trace } = useSelector(state => state.questions)
+    const result = useSelector(state => state.result.result)
     const [{ isLoading, apiData, serverError }] = useFetchQuestion()
 
     const questions = useSelector(state => state.questions.queue[state.questions.trace])
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        // console.log(questions)
-    },)
+        dispatch(updateResult({ trace, checked }))
+    }, [checked])
+
     const onSelect = (i) => {
         onChecked(i)
+        setChecked(i)
+        dispatch(updateResult({ trace, checked }))
     }
 
     if (isLoading) return <h3>isLoading</h3>
@@ -30,18 +37,23 @@ const Questions = ({ onChecked }) => {
                         <li key={i} className="py-2">
                             <input
                                 type="radio"
-                                value={checked}
+                                value={false}
                                 name="options"
                                 id={`q${i}-option`}
                                 onChange={() => onSelect(i)}
                                 className="peer/option checked:bg-yellow-500 checked:hover:bg-yellow-500 checked:active:bg-yellow-500 checked:focus:bg-yellow-500 focus:bg-yellow-500 focus:outline-none focus:ring-1 focus:ring-yellow-500"
+                                checked={result[trace] === i}
                             />
-                            <label htmlFor={`q${i}-option`} className="peer-checked/option:text-yellow-500 ml-3">{q}</label>
+                            {/* <label htmlFor={`q${i}-option`} className="peer-checked/option:text-yellow-500 ml-3">{q}</label> */}
+                            <label
+                                htmlFor={`q${i}-option`}
+                                className={result[trace] === i ? "text-yellow-500 ml-3" : "ml-3"}
+                            >
+                                {q}
+                            </label>
                         </li>
                     ))
                 }
-
-
             </ul>
         </div>
     );
