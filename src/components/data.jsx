@@ -1,20 +1,20 @@
 export const data = [
     {
         "id": 1,
-        "question": "JavaScript es un lenguaje _______",
+        "question": "¿Cuál de los siguientes métodos se utiliza para agregar un elemento al final de un array en JavaScript?",
         "options": [
-            "Orientado a Objetos",
-            "Basado en Objetos",
-            "Procedural"
+            "array.push()",
+            "array.unshift()",
+            "array.pop()"
         ]
     },
     {
         "id": 2,
-        "question": "Los siguientes métodos pueden ser utilizados para mostrar datos en alguna forma usando JavaScript",
+        "question": "¿Cuál de las siguientes opciones NO se utiliza para iterar sobre propiedades de un objeto en JavaScript?",
         "options": [
-            "document.write()",
-            "console.log()",
-            "window.alert()"
+            "for...in",
+            "for...of",
+            "forEach"
         ]
     },
     {
@@ -43,7 +43,16 @@ export const data = [
             "parse()",
             "convert()"
         ]
+    },
+    {
+        "id": 6,
+        "question": "¿Qué es una promesa en JavaScript?",
+        "options": [
+            "Una estrategia para anidar objetos JSON de manera eficiente.",
+            "Un constructo que modela un valor futuro, que puede estar disponible con éxito o fracaso.",
+            "Un método para invocar funciones asíncronas en elementos HTML"
+        ]
     }
 ]
 
-export const answers = [0, 1, 2, 1, 0]
+export const answers = [0, 1, 2, 1, 0, 1]
