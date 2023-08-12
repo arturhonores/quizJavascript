@@ -1,12 +1,16 @@
 import { useRef } from "react"
 import { Link } from "react-router-dom"
+import logoJavascript from "../../public/js-icon.png"
 
 const Home = () => {
     const inputRef = useRef(null)
 
     return (
         <div className="text-white my-10 mx-auto p-5 max-w-3xl flex flex-col gap-6">
-            <h1 className="text-2xl text-center border-4 border-spacing-1 border-yellow-500 py-4 uppercase font-bold">Desafío JS</h1>
+            <div className="border-4 border-spacing-1 border-yellow-500 py-4 flex justify-center items-center gap-2">
+                <h1 className="text-2xl text-center uppercase font-bold">Desafío</h1>
+                <img src={logoJavascript} alt="" width="40px" />
+            </div>
             <ol className="list-decimal list-inside">
                 <li>Se te harán 12 preguntas una tras otra.</li>
                 <li>Se otorgan 10 puntos por la respuesta correcta.</li>
@@ -15,7 +19,7 @@ const Home = () => {
                 <li>El resultado se revelará al final del cuestionario (😺, 🐯, 🦁).</li>
             </ol>
             <form className="self-center w-1/2">
-                <input ref={inputRef} type="text" placeholder="Nombre de usuario" className="text-slate-900 w-full" />
+                <input ref={inputRef} type="text" placeholder="Nombre" className="text-slate-900 w-full focus:outline-none focus:border-yellow-500 focus:ring-yellow-500" />
             </form>
             <div className="self-center">
                 <Link className="btn px-8 py-2" to={"quiz"}>Iniciar</Link>
