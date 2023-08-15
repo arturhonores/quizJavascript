@@ -42,10 +42,9 @@ const Questions = ({ onChecked }) => {
                                 id={`q${i}-option`}
                                 onChange={() => onSelect(i)}
                                 // checked={result[trace] === i}
-                                className="peer/option check"
+                                className={`peer/option check relative ${result[trace] === i && "before:absolute before:w-4 before:h-4 before:bg-transparent before:rounded-full before:bottom-0 before:border-yellow-500 before:border-4"}`}
                             />
-                            {/* <label htmlFor={`q${i}-option`} className="peer-checked/option:text-yellow-500 ml-3">{q}</label> */}
-                            <label htmlFor={`q${i}-option`} className={`peer-checked/option:text-yellow-500 ml-3 relative ${result[trace] === i && "text-yellow-500 ml-3 before:absolute before:w-4 before:h-4 before:bg-transparent before:rounded-full before:bottom-0 before:-left-7 before:border-yellow-500 before:border-4"}`}>{q}</label>
+                            <label htmlFor={`q${i}-option`} className={`peer-checked/option:text-yellow-500 ml-3 ${result[trace] === i && "text-yellow-500"}`}>{q}</label>
                         </li>
                     ))
                 }
