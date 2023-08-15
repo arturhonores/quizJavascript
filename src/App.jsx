@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Home from "./components/Home"
 import Quiz from "./components/Quiz"
 import Result from "./components/Result"
+import { CheckUserExist } from "./helper/helper"
 
 //react routes
 const router = createBrowserRouter([
@@ -11,11 +12,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/quiz",
-    element: <Quiz></Quiz>
+    element: <CheckUserExist><Quiz /></CheckUserExist>
   },
   {
     path: "/result",
-    element: <Result></Result>
+    element: <CheckUserExist><Result /></CheckUserExist>
   },
 ])
 

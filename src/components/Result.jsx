@@ -34,7 +34,7 @@ const Result = () => {
                 <div className="flex justify-center flex-col border border-white py-3 px-4 gap-1">
                     <div className="flex justify-between">
                         <span className="font-bold">Usuario</span>
-                        <span className="">Daily Tuition</span>
+                        <span className="">{userId}</span>
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Puntos totales :</span>

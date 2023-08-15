@@ -1,9 +1,18 @@
 import { useRef } from "react"
+import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import logoJavascript from "../../public/js-icon.png"
+import logoJavascript from "/js-icon.png"
+import { setUserId } from "../redux/result_reducer"
 
 const Home = () => {
     const inputRef = useRef(null)
+    const dispatch = useDispatch()
+
+    function startQuiz() {
+        if (inputRef.current?.value) {
+            dispatch(setUserId(inputRef.current?.value))
+        }
+    }
 
     return (
         <div className="text-white my-10 mx-auto p-5 max-w-3xl flex flex-col gap-6">
@@ -18,11 +27,11 @@ const Home = () => {
                 <li>Puedes revisar y cambiar respuestas antes de que termine el cuestionario.</li>
                 <li>El resultado se revelará al final del cuestionario (😺, 🐯, 🦁).</li>
             </ol>
-            <form className="self-center w-1/2">
-                <input ref={inputRef} type="text" placeholder="Nombre" className="text-slate-900 w-full focus:outline-none focus:border-yellow-500 focus:ring-yellow-500" />
+            <form className="self-center w-1/2" onSubmit={(e) => e.preventDefault()}>
+                <input ref={inputRef} type="text" placeholder="Nombre" className="text-slate-900 w-full text-center focus:outline-none focus:border-yellow-500 focus:ring-yellow-500" />
             </form>
             <div className="self-center">
-                <Link className="btn px-8 py-2" to={"quiz"}>Iniciar</Link>
+                <Link className="btn px-8 py-2" to={"quiz"} onClick={startQuiz}>Iniciar</Link>
             </div>
         </div>
     )
