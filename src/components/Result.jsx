@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import ResultTable from "./ResultTable"
 import { useDispatch, useSelector } from "react-redux"
-import { attempts_Number, earnPoints_Number, flagResult } from "../helper/helper"
+import { attempts_Number, earnPoints_Number, emojiResult } from "../helper/helper"
 
 /**import actions */
 import { resetAllAction } from "../redux/question_reducer"
@@ -20,7 +20,10 @@ const Result = () => {
     const totalPoints = queue.length * 10;
     const attempts = attempts_Number(result);
     const earnPoints = earnPoints_Number(result, answers, 10);
-    const flag = flagResult(totalPoints, earnPoints)
+    /**flagResult function import from helper.jsx */
+    // const flag = flagResult(totalPoints, earnPoints)
+    /**emoji-result */
+    const emoji = emojiResult(earnPoints)
 
     function onRestart() {
         dispatch(resetAllAction())
@@ -54,7 +57,8 @@ const Result = () => {
                     </div>
                     <div className="flex justify-between">
                         <span className="font-bold">Resultado</span>
-                        <span className={`font-bold ${flag ? "text-green-500" : "text-red-500"}`}>{flag ? "Aprobado" : "Desaprobado"}</span>
+                        {/* <span className={`font-bold ${flag ? "text-green-500" : "text-red-500"}`}>{flag ? "Aprobado" : "Desaprobado"}</span> */}
+                        <span className="text-2xl">{emoji}</span>
                     </div>
                 </div>
                 <Link className="btn w-fit self-center px-8 py-2" to={"/"} onClick={onRestart}>Inicio</Link>
