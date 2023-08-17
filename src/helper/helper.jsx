@@ -24,6 +24,16 @@ export function emojiResult(earnPoints) {
     }
 }
 
+export function textResult(earnPoints) {
+    if (earnPoints > 80) {
+        return "Con una melena majestuosa y un dominio imponente de JavaScript, eres el león que lidera la manada de desarrolladores con gracia y sabiduría. ¡Eres el rey de la selva del código!"
+    } else if (earnPoints > 40) {
+        return "Eres audaz y poderos@ en el reino del código. Tu ferocidad al resolver problemas te convierte en el tigre temido de JavaScript. ¡No te conformes y sigue aprendiendo!"
+    } else {
+        return "Aún eres un minin@ en el mundo de JavaScript, pero con poco de práctica te deslizarás con elegancia entre las líneas de código. ¡Sigue esforzándote gat@ ninja de JavaScript!"
+    }
+}
+
 /**check user auth */
 export function CheckUserExist({ children }) {
     const auth = useSelector(state => state.result.userId)
