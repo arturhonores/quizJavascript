@@ -30,7 +30,7 @@ export function textResult(earnPoints) {
     } else if (earnPoints > 40) {
         return "Eres audaz y poderos@ en el reino del código. Tu ferocidad al resolver problemas te convierte en el tigre temido de JavaScript. ¡No te conformes y sigue aprendiendo!"
     } else {
-        return "Aún eres un minin@ en el mundo de JavaScript, pero con poco de práctica te deslizarás con elegancia entre las líneas de código. ¡Sigue esforzándote gat@ ninja de JavaScript!"
+        return "Aún eres un minin@ en el mundo de JavaScript, pero con un poco de práctica te deslizarás con elegancia entre las líneas de código. ¡Sigue esforzándote gat@ ninja de JavaScript!"
     }
 }
 
