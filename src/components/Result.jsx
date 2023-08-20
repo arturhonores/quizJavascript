@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import logoJavascript from "/js-icon.png"
 import ResultTable from "./ResultTable"
 import { useDispatch, useSelector } from "react-redux"
 import { attempts_Number, earnPoints_Number, emojiResult, textResult } from "../helper/helper"
@@ -35,7 +36,10 @@ const Result = () => {
     return (
         <>
             <div className="text-white my-10 mx-auto p-5 max-w-3xl flex flex-col gap-6">
-                <h1 className="text-2xl text-center border-4 border-spacing-1 border-yellow-500 py-4 uppercase font-bold">Desafío JS</h1>
+                <div className="border-4 border-spacing-1 border-yellow-500 py-4 flex justify-center items-center gap-2">
+                    <h1 className="text-2xl text-center uppercase font-bold">Desafío</h1>
+                    <img src={logoJavascript} alt="" width="40px" />
+                </div>
                 <div className="flex justify-center flex-col border border-white py-3 px-4 gap-1">
                     <div className="flex justify-between">
                         <span className="font-bold">Usuario</span>
